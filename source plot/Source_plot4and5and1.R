@@ -11,7 +11,6 @@ library(dplyr)
 library(stringr)
 library(ggrepel)
 library(tidyverse)
-setwd("D:/RA/共病轨迹/预处理代码/预处理代码/github")
 load('Figure4and5.RData')
 index<-c('visits','duration','cost','zffy')
 lab<-c('Hospital visits (No.)', 'Lengths of stay (Days)', 'Total cost ($)', 'Out-of-pocket spendings ($)')
@@ -742,4 +741,5 @@ size=30
 psum<-plot_grid(fig1,plot_grid(e_fig4,e_fig5,ncol=2,labels=c('b','c'),label_size = size,rel_widths = c(6,7)),nrow=2,labels = c('a',''),label_size = size)
 
 ggsave(filename = "Figure 1.pdf", plot = psum, width = 24, height =24,device = cairo_pdf)
+
 
