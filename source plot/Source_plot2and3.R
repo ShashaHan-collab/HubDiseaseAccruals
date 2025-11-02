@@ -1,5 +1,4 @@
 rm(list = ls())
-setwd("D:/RA/共病轨迹/预处理代码/预处理代码")
 library(ggplot2)
 library(reshape2)
 library(devtools)
@@ -18,7 +17,6 @@ library(readr)
 library(ggraph)
 library(tidygraph)
 library(RcmdrMisc)
-# save(char_D1_D2_D3_more20,label3,class_level,discription,disease_trace_3_more20,file='github/Figure2.RData')
 Fig_2and3<-function(XB_aim){
 if(XB_aim==0) load('github/Figure3.RData')
 if(XB_aim==1) load('github/Figure2.RData')
@@ -130,4 +128,5 @@ if(XB_aim==1){
 }
 }
 Fig_2and3(0)
+
 Fig_2and3(1)
