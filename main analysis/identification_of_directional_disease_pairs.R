@@ -230,3 +230,4 @@ for(i in 1:length(var_disease_code_chosen)) {
 remove("a")
 
 save.image("p_value and RR for binomial model_par_XBsep.RData")
+
