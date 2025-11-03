@@ -1,3 +1,5 @@
+cost_scen1 <- vector(mode = "list", length = length(var_match))
+names(cost_scen1) <- var_match; cost_scen2 <- cost_scen3 <- cost_scen1
 for(i in index) {
   if(i %% 1000 == 0) cat("i = ", i, "/", nrow(data), "\n")
   ZYZD_i <- ZYZD[i]; QTZD_i <- QTZD[[i]]; ZFY_i <- var_pay[i,1];
