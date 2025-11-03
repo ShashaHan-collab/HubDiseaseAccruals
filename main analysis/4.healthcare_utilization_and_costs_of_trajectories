@@ -25,31 +25,6 @@ for(i in index) {
       ##alternative scenario analyses:duplication counting
       res <- rep(ZFY_i, temp); names(res) <- c(ZYZD_i, QTZD_i)
       cost_scen3[[i]] <- res
-      #visit
-      res <- rep(0, temp); names(res) <- c(ZYZD_i, QTZD_i)
-      res[1] <- 1
-      visit_scen1[[i]] <- res
-      res[1] <-0.8; res[-1] <- rep( 0.2 / (temp - 1), temp - 1)
-      visit_scen2[[i]] <- res
-      res <- rep(1, temp); names(res) <- c(ZYZD_i, QTZD_i)
-      visit_scen3[[i]] <- res
-      #zfje
-      res <- rep(0, temp); names(res) <- c(ZYZD_i, QTZD_i)
-      res[1] <- ZF_i
-      zf_scen1[[i]] <- res
-      res[1] <- ZF_i * 0.8; res[-1] <- rep(ZF_i * 0.2 / (temp - 1), temp - 1)
-      zf_scen2[[i]] <- res
-      res <- rep(ZF_i, temp); names(res) <- c(ZYZD_i, QTZD_i)
-      zf_scen3[[i]] <- res
-      #duration
-      res <- rep(0, temp); names(res) <- c(ZYZD_i, QTZD_i)
-      res[1] <- du_i
-      duration_scen1[[i]] <- res
-      res[1] <- du_i * 0.8; res[-1] <- rep(du_i * 0.2 / (temp - 1), temp - 1)
-      duration_scen2[[i]] <- res
-      res <- rep(du_i, temp); names(res) <- c(ZYZD_i, QTZD_i)
-      duration_scen3[[i]] <- res
-      
     }
   }
 }
