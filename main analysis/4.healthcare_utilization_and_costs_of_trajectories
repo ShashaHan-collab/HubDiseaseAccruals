@@ -1,1 +1,55 @@
-
+for(i in index) {
+  if(i %% 1000 == 0) cat("i = ", i, "/", nrow(data), "\n")
+  ZYZD_i <- ZYZD[i]; QTZD_i <- QTZD[[i]]; ZFY_i <- var_pay[i,1];
+  ZF_i<-var_ZFJE[i];du_i<-var_duration[i]
+  if(ZYZD_i == "") {next
+  } else {
+    if(QTZD_i[1] == "") {
+      res <- ZFY_i; names(res) <- ZYZD_i
+      cost_scen1[[i]] <- cost_scen2[[i]] <- cost_scen3[[i]] <- res
+      res <- 1; names(res) <- ZYZD_i
+      visit_scen1[[i]] <- visit_scen2[[i]] <- visit_scen3[[i]] <- res
+      res <- ZF_i; names(res) <- ZYZD_i
+      zf_scen1[[i]] <- zf_scen2[[i]] <- zf_scen3[[i]] <- res
+      res <- du_i; names(res) <- ZYZD_i
+      duration_scen1[[i]] <- duration_scen2[[i]] <- duration_scen3[[i]] <- res
+    } else {
+      temp <- length(QTZD_i) + 1
+      res <- rep(0, temp); names(res) <- c(ZYZD_i, QTZD_i)
+      ##main analyses
+      res[1] <- ZFY_i
+      cost_scen1[[i]] <- res
+      ##alternative scenario analyses:primary dominated
+      res[1] <- ZFY_i * 0.8; res[-1] <- rep(ZFY_i * 0.2 / (temp - 1), temp - 1)
+      cost_scen2[[i]] <- res
+      ##alternative scenario analyses:duplication counting
+      res <- rep(ZFY_i, temp); names(res) <- c(ZYZD_i, QTZD_i)
+      cost_scen3[[i]] <- res
+      #visit
+      res <- rep(0, temp); names(res) <- c(ZYZD_i, QTZD_i)
+      res[1] <- 1
+      visit_scen1[[i]] <- res
+      res[1] <-0.8; res[-1] <- rep( 0.2 / (temp - 1), temp - 1)
+      visit_scen2[[i]] <- res
+      res <- rep(1, temp); names(res) <- c(ZYZD_i, QTZD_i)
+      visit_scen3[[i]] <- res
+      #zfje
+      res <- rep(0, temp); names(res) <- c(ZYZD_i, QTZD_i)
+      res[1] <- ZF_i
+      zf_scen1[[i]] <- res
+      res[1] <- ZF_i * 0.8; res[-1] <- rep(ZF_i * 0.2 / (temp - 1), temp - 1)
+      zf_scen2[[i]] <- res
+      res <- rep(ZF_i, temp); names(res) <- c(ZYZD_i, QTZD_i)
+      zf_scen3[[i]] <- res
+      #duration
+      res <- rep(0, temp); names(res) <- c(ZYZD_i, QTZD_i)
+      res[1] <- du_i
+      duration_scen1[[i]] <- res
+      res[1] <- du_i * 0.8; res[-1] <- rep(du_i * 0.2 / (temp - 1), temp - 1)
+      duration_scen2[[i]] <- res
+      res <- rep(du_i, temp); names(res) <- c(ZYZD_i, QTZD_i)
+      duration_scen3[[i]] <- res
+      
+    }
+  }
+}
