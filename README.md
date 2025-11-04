@@ -11,7 +11,7 @@ The analytical pipeline comprises five key stages:
 
 2. Statistical significance testing: Assesses the significance of disease chains via binomial testing
 
-3. Trajectory construction: Builds disease trajectories as sequences of three distinct diseases (D₁ → D₂ → D₃)
+3. Trajectory construction: Builds disease trajectories as sequences of three distinct diseases (D₁ → D₂ → D₃). The framework is extensible to longer sequences, though the current analysis focuses on triplets.
 
 4. Healthcare utilization analysis: Implements longitudinal tracking of healthcare costs and utilization along trajectories
 
