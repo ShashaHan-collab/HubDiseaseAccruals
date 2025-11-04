@@ -11,9 +11,13 @@ library(dplyr)
 library(stringr)
 library(ggrepel)
 library(tidyverse)
+
 load('Figure4.RData')
+
+
 index<-c('visits','duration','cost','zffy')
 lab<-c('Hospital visits (No.)', 'Lengths of stay (Days)', 'Total cost ($)', 'Out-of-pocket spendings ($)')
+
 # Define nested function to generate box plots
 ps<-function(scen,key=F,weighted=F){
   assign('male_scen',get(paste0('male_scen',scen)))
@@ -202,11 +206,11 @@ drop_hub<-function(scen){
         #stat_summary(fun.data = boxplot_stats, geom = "text", position = position_dodge(width = 0.75), vjust = c(-1), size = 3.5, color = "black", hjust = 0.5) +
         scale_fill_manual(values = custom_colors) +
         theme_minimal() +
-        theme(legend.position = "none",panel.grid.major = element_blank(), # 去除主网格线
+        theme(legend.position = "none",panel.grid.major = element_blank(), 
               panel.grid.minor = element_blank(),
-              #axis.line.x = element_line(color = "darkgray"), # 显示x轴线
-              # axis.line.y = element_line(color = "black"), # 显示y轴线
-              # axis.ticks = element_line(color = "black"), # 显示刻度线
+              #axis.line.x = element_line(color = "darkgray"), 
+              # axis.line.y = element_line(color = "black"), 
+              # axis.ticks = element_line(color = "black"), 
               # axis.ticks.length = unit(0.25, "cm")
         )+
         labs(title = "", x = "", y = lab[k])+
@@ -252,4 +256,5 @@ P33T<-plot_grid(p3,p3T,nrow=2)
 ggsave(filename = "Figure 4.pdf", plot = P11T, width = wid+5, height =2*hei)
 ggsave(filename = "Supplementary Figure 3.pdf", plot = P22T, width = wid+5, height =2*hei)
 ggsave(filename = "Supplementary Figure 4.pdf", plot = P33T, width = wid+5, height =2*hei)
+
 
