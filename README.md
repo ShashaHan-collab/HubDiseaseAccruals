@@ -46,7 +46,7 @@ Performs binomial testing for statistically significant disease chains (RR > 1)
 Constructs three-disease sequences (D₁ → D₂ → D₃) from significant disease pairs
 
 *4.healthcare_utilization_and_costs_of_trajectories.R*
-Tracks longitudinal healthcare utilization and costs across multimorbidity trajectories
+Tracks longitudinal healthcare utilization and costs along multimorbidity trajectories
 
 *5.trajectory_clustering.R*
 Implements nested k-means clustering to identify hub chains and group disease progression patterns
