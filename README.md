@@ -7,15 +7,15 @@ This novel nested k-means trajectory clustering method groups the disease accrua
 ## Prerequisite software 
 * R version 4.3.0.
 ## Prerequisite third-party R packages
-Data Manipulation & Analysis:dplyr,readxl,readr,tidyr,reshape2,stringr,psych,mlbench,RcmdrMisc,openxlsx
+Data manipulation and analysis: dplyr,readxl,readr,tidyr,reshape2,stringr, psych, mlbench, RcmdrMisc, openxlsx
 
-Visualization:ggplot2,cowplot,RColorBrewer,ggrepel,ggraph,grid,gridExtra,circlize,dendextend
+Visualization: ggplot2,cowplot, RColorBrewer,ggrepel, ggraph, grid, gridExtra,circlize,dendextend
 
-Graph & Network Analysis:igraph,tidygraph
+Graph and network analysis: igraph,tidygraph
 
-Parallel Computing: Parallel,MCL
+Parallel computing: Parallel, MCL
 
-Meta-Packages & Development:tidyverse,devtools
+Meta-packages and development:tidyverse,devtools
 
 # Descriptions of the files
 *
