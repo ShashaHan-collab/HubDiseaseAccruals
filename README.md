@@ -18,7 +18,7 @@ The analytical pipeline comprises five key stages:
 5. Trajectory clustering: Applies nested k-means clustering to identify hub chains and disease progression patterns
 
 # Prerequisites
-## Prerequisite software 
+## Software requirements 
 * R version 4.3.0.
 ## Prerequisite third-party R packages
 Data manipulation and analysis: dplyr,readxl,readr,tidyr,reshape2,stringr, psych, mlbench, RcmdrMisc, openxlsx
@@ -31,19 +31,45 @@ Parallel computing: Parallel, MCL
 
 Meta-packages and development:tidyverse,devtools
 
-# Descriptions of the files
+# Repository Structure
+📁 main_analysis/
+Core analytical scripts implementing the methodological pipeline:
 
-In the "main analysis" subfolder: 
-1.identification_of_directional_disease_pairs.R includes the code to quantify the directional association between two diseases.The strength of this association was measured using a matched relative risk (RR) approach.
+identification_of_directional_disease_pairs.R
+Implements the matched relative risk approach to quantify directional disease associations
 
-2.directionality_testing.R includes the code to assess the statistical significance of each chain (D1 to D2) with RR >1 using a binomial test. 
+directionality_testing.R
+Performs binomial testing for statistically significant disease chains (RR > 1)
 
-3.construction_of_disease_accrual_trajectories.R includes the code to construct disease trajectories as sequences of three distinct diseases (D1 to D2 to D3).
+construction_of_disease_accrual_trajectories.R
+Constructs three-disease sequences (D₁ → D₂ → D₃) from significant disease pairs
 
-4.healthcare_utilization_and_costs_of_trajectories includes the code for the longitudinal approach to track healthcare utilization and costs across the multimorbidity trajectory. 
+healthcare_utilization_and_costs_of_trajectories.R
+Tracks longitudinal healthcare utilization and costs across multimorbidity trajectories
 
-5.trajectory_clustering.R includes the code for the nested k-means clustering approach to group the identified trajectories.
+trajectory_clustering.R
+Implements nested k-means clustering to identify hub chains and group disease progression patterns
 
-The "source data" subfolder includes the source data for the plots, figures 1-5.
-The "source plot" subfolder includes the plotting code for figures 1-5.
+📁 source_data/
+Contains all source data required to reproduce Figures 1-5 from the manuscript.
+
+📁 source_plot/
+Includes complete plotting code for generating Figures 1-5 as presented in the manuscript.
+
+# Usage
+Execute scripts in numerical order within the main_analysis/ directory to reproduce the complete analytical pipeline:
+
+Start with directional pair identification
+
+Proceed to significance testing
+
+Construct disease trajectories
+
+Analyze healthcare utilization
+
+Perform trajectory clustering
+
+# Citation
+If you use this code in your research, please cite our publication.
+
 
