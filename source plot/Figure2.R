@@ -17,7 +17,9 @@ library(readr)
 library(ggraph)
 library(tidygraph)
 library(RcmdrMisc)
+
 load('Figure2.RData')
+
 Fig_2<-function(XB_aim){
   for (k in 1:length(class_level)) {
     var_name <- paste("p", k, sep="")  
@@ -118,5 +120,6 @@ Fig_2<-function(XB_aim){
     ggsave("Figure2.pdf",prowsum, width = 24, height =24,limitsize = FALSE)
   }
 }
+
 
 Fig_2(1)
