@@ -1,17 +1,28 @@
+## Dataset description. ##edited by SH, please introduce your referred dataset here, including all the names that you will use later.
+
+## Give notations here, edited by SH:
 cost_scen1 <- vector(mode = "list", length = length(var_match))
+
+## Give notations here, edited by SH:
 names(cost_scen1) <- var_match; cost_scen2 <- cost_scen3 <- cost_scen1
+
+## Give notations here, edited by SH:
 for(i in index) {
+## Give notations here, edited by SH:
   if(i %% 1000 == 0) cat("i = ", i, "/", nrow(data), "\n")
+## Give notations here, edited by SH:
   ZYZD_i <- ZYZD[i]; QTZD_i <- QTZD[[i]]; ZFY_i <- var_pay[i,1];
+## Give notations here, edited by SH:
   if(ZYZD_i == "") {next
   } else {
+## Give notations here, edited by SH:
     if(QTZD_i[1] == "") {
       res <- ZFY_i; names(res) <- ZYZD_i
       cost_scen1[[i]] <- cost_scen2[[i]] <- cost_scen3[[i]] <- res
-    } else {
+    } else { ## Give notations here, edited by SH:
       temp <- length(QTZD_i) + 1
       res <- rep(0, temp); names(res) <- c(ZYZD_i, QTZD_i)
-      ##main analyses
+      ##main analyses: primary win-all
       res[1] <- ZFY_i
       cost_scen1[[i]] <- res
       ##alternative scenario analyses:primary dominated
