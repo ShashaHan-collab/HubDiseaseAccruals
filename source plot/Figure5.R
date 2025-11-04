@@ -11,7 +11,11 @@ library(dplyr)
 library(stringr)
 library(ggrepel)
 library(tidyverse)
+
+
 load('Figure5.RData')
+
+
 male1<-left_join(male_combined_data,male_scen1,by='nodes')
 female1<-left_join(female_combined_data,female_scen1,by='nodes')
 
@@ -117,10 +121,10 @@ p1 <- ggplot(female, aes(x = visits, y = duration, color = category,size=num)) +
     axis.title.y = element_text(size = 13, color = "black", face = "bold")
   )
 p3 <- ggplot(male, aes(x = visits, y = duration, color = category,size=num)) +
-  geom_point(alpha = 0.7) +  # alpha用于设置透明度，使图表更易读
-  scale_size_continuous(range = c(1, 10)) +  # 控制点的大小范围
+  geom_point(alpha = 0.7) +  
+  scale_size_continuous(range = c(1, 10)) +  
   theme_minimal() +
-  theme(legend.position = "none",panel.grid.major = element_blank(), # 去除主网格线
+  theme(legend.position = "none",panel.grid.major = element_blank(), 
         panel.grid.minor = element_blank(),
   )+
   xlab(lab[1])+  
@@ -142,7 +146,8 @@ p3 <- ggplot(male, aes(x = visits, y = duration, color = category,size=num)) +
     axis.title.y = element_text(size = 13, color = "black", face = "bold")
   )
 p<-plot_grid(p1,p2,p3,p4, nrow = 2,labels = "auto",label_size = 15)
-# Bubble chart with legend
+
+# Bubble chart 
 legend_plot <- ggplot(male, aes(x = visits, y = duration, color = category,size=num)) +
   geom_point(alpha = 0.7) + 
   scale_size_continuous(range = c(1, 10)) + 
@@ -165,4 +170,5 @@ ggsave(filename = "Figure 5.pdf", plot = psum, width = 12, height =9)
 female$sex='Female'
 male$sex='Male'
 all<-rbind(male,female)
+
 
