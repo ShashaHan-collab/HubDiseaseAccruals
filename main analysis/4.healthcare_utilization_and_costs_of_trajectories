@@ -1,25 +1,28 @@
-## Dataset description. ##edited by SH, please introduce your referred dataset here, including all the names that you will use later.
+## Dataset description. 
+##var_match: Patient ID of matched electronic medical record 
+##index: Serial number of electronic medical record data
+##ZYZD: Primary diagnosis
+##QTZD: Secondary diagnosis
+##ZFY_i: cost recorded in the data entry
 
-## Give notations here, edited by SH:
+## cost_scen1: Used to store the cost of a single consultation under the primary win-all scenario
 cost_scen1 <- vector(mode = "list", length = length(var_match))
-
-## Give notations here, edited by SH:
+## cost_scen2: Used to store the cost of a single consultation under the primary dominated scenario
+## cost_scen3: Used to store the cost of a single consultation under the duplication counting scenario
 names(cost_scen1) <- var_match; cost_scen2 <- cost_scen3 <- cost_scen1
 
-## Give notations here, edited by SH:
+## Calculate the cost in a single electronic medical record data under different scenarios
 for(i in index) {
-## Give notations here, edited by SH:
-  if(i %% 1000 == 0) cat("i = ", i, "/", nrow(data), "\n")
-## Give notations here, edited by SH:
+  ## Extract information from each data entry
   ZYZD_i <- ZYZD[i]; QTZD_i <- QTZD[[i]]; ZFY_i <- var_pay[i,1];
-## Give notations here, edited by SH:
+  ## Skip data with no diagnosis results
   if(ZYZD_i == "") {next
   } else {
-## Give notations here, edited by SH:
+    ## If there is only a primary diagnosis, the costs under the three scenarios are the same
     if(QTZD_i[1] == "") {
       res <- ZFY_i; names(res) <- ZYZD_i
       cost_scen1[[i]] <- cost_scen2[[i]] <- cost_scen3[[i]] <- res
-    } else { ## Give notations here, edited by SH:
+    } else { ## Calculate when there are both primary and secondary diagnoses
       temp <- length(QTZD_i) + 1
       res <- rep(0, temp); names(res) <- c(ZYZD_i, QTZD_i)
       ##main analyses: primary win-all
@@ -33,4 +36,41 @@ for(i in index) {
       cost_scen3[[i]] <- res
     }
   }
+}
+
+## Deduplicate patient IDs
+pat <- unique(var_match)
+## For each patient, sum all costs for each disease
+for (i in 1:length(pat)) {
+  ## The i-th patient
+  p <- pat[i]
+  ## Extract all consultation cost records for this patient
+  duplicates <- which(names(cost_scen1) == p)
+  du <- cost_scen1[duplicates]
+  ## Create an empty list for summation
+  sums <- list()
+  ## Iterate over each element
+  for (element in du) {
+    names_in_element <- names(element)
+    for (name in names_in_element) {
+      if (!name %in% names(sums)) {
+        ## If the name does not appear in sums yet, initialize to 0
+        sums[[name]] <- 0
+      }
+      ## Accumulate the corresponding value of the current element
+      sums[[name]] <- sums[[name]] + element[[name]]
+    }
+  }
+  ## Put the summed results back to their first occurrence position
+  for (j in seq_along(du)) {
+    for (name in names(du[[j]])) {
+      if (name %in% names(sums)) {
+        ## If the name is in sums, update its value
+        du[[j]][[name]] <- sums[[name]]
+        ## Remove the name from sums to avoid duplicate placement
+        sums[[name]] <- NULL
+      }
+    }
+  }
+  cost_scen1[duplicates] <- du
 }
