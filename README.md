@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17518622.svg)](https://doi.org/10.5281/zenodo.17518622)
 # Data-driven identification of hub chains in disease accruals
 This repository contains the implementation of a nested k-means trajectory clustering method for analyzing disease progression patterns. The method groups disease accrual processes and identifies critical *hub chains* - key directional disease pairs that drive the progression of multimorbidity and healthcare resource utilization.
 
