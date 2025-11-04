@@ -17,7 +17,10 @@ library(readr)
 library(ggraph)
 library(tidygraph)
 library(RcmdrMisc)
+
 load('Figure3.RData')
+
+
 Fig_3<-function(XB_aim){
   
   for (k in 1:length(class_level)) {
@@ -120,3 +123,4 @@ Fig_3<-function(XB_aim){
   }
 }
 Fig_3(0)
+
