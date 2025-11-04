@@ -32,7 +32,8 @@ Parallel computing: Parallel, MCL
 Meta-packages and development:tidyverse,devtools
 
 # Repository Structure
-📁 main_analysis/
+
+📁 ## main_analysis/
 Core analytical scripts implementing the methodological pipeline:
 
 identification_of_directional_disease_pairs.R
