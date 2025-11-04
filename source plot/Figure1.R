@@ -1,4 +1,5 @@
 rm(list = ls())
+
 library(ggplot2)
 library(tidyr)
 library(reshape2)
@@ -11,6 +12,7 @@ library(dplyr)
 library(stringr)
 library(ggrepel)
 library(tidyverse)
+
 load('Figure1a.RData')
 
 circle_bar<-function(xb,index){
@@ -34,7 +36,7 @@ circle_bar<-function(xb,index){
   # Get the name and the y position of each label
   label_data <- data
   number_of_bar <- nrow(label_data)
-  angle <- 90 - 360 * (label_data$id-0.5) /number_of_bar     # I substract 0.5 because the letter must have the angle of the center of the bars. Not extreme right(1) or extreme left (0)
+  angle <- 90 - 360 * (label_data$id-0.5) /number_of_bar     
   label_data$hjust <- ifelse( angle < -90, 1, 0)
   label_data$angle <- ifelse(angle < -90, angle+180, angle)
   
@@ -120,19 +122,19 @@ p_sex<-function(index1,index2) {
   if(index2==3) b2<-4
   if(index2==4) b2<-1
   p<-ggplot(all, aes_string(x = index[index1], y = index[index2], color = 'sex', size = 'num')) +
-    geom_point(alpha = 0.7) +  # alpha用于设置透明度，使图表更易读
-    scale_size_continuous(range = c(1, 10)) +  # 控制点的大小范围
+    geom_point(alpha = 0.7) + 
+    scale_size_continuous(range = c(1, 10)) +  
     theme_minimal() +
     scale_color_manual(values = c("Male" = '#355c7d',  "Female" = '#D32F2F'))+
-    theme(axis.title = element_text(size = 14),  # 调整轴标题大小
-          axis.text = element_text(size = 12))+  # 调整轴文本大小  
-    xlab(lab[index1])+   # 设置x轴标签
+    theme(axis.title = element_text(size = 14),  
+          axis.text = element_text(size = 12))+   
+    xlab(lab[index1])+   
     ylab(lab[index2])+
-    theme(legend.position = "none",panel.grid.major = element_blank(), # 去除主网格线
+    theme(legend.position = "none",panel.grid.major = element_blank(), 
           panel.grid.minor = element_blank(),
-          # axis.line.x = element_line(color = "black"), # 显示x轴线
-          # axis.line.y = element_line(color = "black"), # 显示y轴线
-          # axis.ticks = element_line(color = "black"), # 显示刻度线
+          # axis.line.x = element_line(color = "black"), 
+          # axis.line.y = element_line(color = "black"), 
+          # axis.ticks = element_line(color = "black"), 
           # axis.ticks.length = unit(0.25, "cm")
     )+
     scale_x_continuous(limits = c(0,maxi1),breaks = seq(0,maxi1,b1))+
@@ -185,20 +187,20 @@ p_sex2<-function(index1,index2) {
   if(index2==4) b2<-1
   p<-ggplot(intersect_all, aes_string(x = index[index1], y = index[index2], color = 'sex', size = 'num')) +
     geom_line(aes(group = label),alpha = 0.8,size=1,color='lightgray')+
-    geom_point(alpha = 0.7) +  # alpha用于设置透明度，使图表更易读
-    scale_size_continuous(range = c(1, 10)) +  # 控制点的大小范围
+    geom_point(alpha = 0.7) +  
+    scale_size_continuous(range = c(1, 10)) +  
     theme_minimal() +
     scale_color_manual(values = c("Male" = '#355c7d',  "Female" = '#D32F2F'))+
     geom_text_repel(data = subset(intersect_all, sex == "Male"),aes(label = label),cex=2.5,force=2,color='black')+
-    theme(axis.title = element_text(size = 14),  # 调整轴标题大小
-          axis.text = element_text(size = 12))+  # 调整轴文本大小  
-    xlab(lab[index1])+   # 设置x轴标签
+    theme(axis.title = element_text(size = 14),  
+          axis.text = element_text(size = 12))+  
+    xlab(lab[index1])+   
     ylab(lab[index2])+
-    theme(legend.position = "none",panel.grid.major = element_blank(), # 去除主网格线
+    theme(legend.position = "none",panel.grid.major = element_blank(), 
           panel.grid.minor = element_blank(),
-          # axis.line.x = element_line(color = "black"), # 显示x轴线
-          # axis.line.y = element_line(color = "black"), # 显示y轴线
-          # axis.ticks = element_line(color = "black"), # 显示刻度线
+          # axis.line.x = element_line(color = "black"), 
+          # axis.line.y = element_line(color = "black"), 
+          # axis.ticks = element_line(color = "black"), 
           # axis.ticks.length = unit(0.25, "cm")
     )+
     scale_x_continuous(limits = c(0,maxi1),breaks = seq(0,maxi1,b1))+
@@ -241,4 +243,5 @@ size=30
 psum<-plot_grid(fig1,plot_grid(e_fig4,e_fig5,ncol=2,labels=c('b','c'),label_size = size,rel_widths = c(6,7)),nrow=2,labels = c('a',''),label_size = size)
 
 ggsave(filename = "Figure 1.pdf", plot = psum, width = 24, height =24,device = cairo_pdf)
+
 
