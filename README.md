@@ -36,19 +36,19 @@ Meta-packages and development:tidyverse,devtools
 📁 *main_analysis/*
 Core analytical scripts implementing the methodological pipeline:
 
-identification_of_directional_disease_pairs.R
+*1.identification_of_directional_disease_pairs.R*
 Implements the matched relative risk approach to quantify directional disease associations
 
-directionality_testing.R
+*2.directionality_testing.R*
 Performs binomial testing for statistically significant disease chains (RR > 1)
 
-construction_of_disease_accrual_trajectories.R
+*3.construction_of_disease_accrual_trajectories.R*
 Constructs three-disease sequences (D₁ → D₂ → D₃) from significant disease pairs
 
-healthcare_utilization_and_costs_of_trajectories.R
+*4.healthcare_utilization_and_costs_of_trajectories.R*
 Tracks longitudinal healthcare utilization and costs across multimorbidity trajectories
 
-trajectory_clustering.R
+*5.trajectory_clustering.R*
 Implements nested k-means clustering to identify hub chains and group disease progression patterns
 
 📁 *source_data/*
