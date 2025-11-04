@@ -1,4 +1,4 @@
-## Data-driven identification of hub chains in disease accruals
+# Data-driven identification of hub chains in disease accruals
 This repository contains the implementation of a nested k-means trajectory clustering method for analyzing disease progression patterns. The method groups disease accrual processes and identifies critical *hub chains* - key directional disease pairs that drive the progression of multimorbidity and healthcare resource utilization.
 
 Associated paper: Han, S., Zhou, C., Li, S. et al. Data-driven identification of hub chains in disease accruals to reduce healthcare utilization and costs. 
@@ -33,7 +33,7 @@ Meta-packages and development:tidyverse,devtools
 
 # Repository Structure
 
-📁 ## main_analysis/
+📁 *main_analysis/*
 Core analytical scripts implementing the methodological pipeline:
 
 identification_of_directional_disease_pairs.R
@@ -51,24 +51,24 @@ Tracks longitudinal healthcare utilization and costs across multimorbidity traje
 trajectory_clustering.R
 Implements nested k-means clustering to identify hub chains and group disease progression patterns
 
-📁 source_data/
+📁 *source_data/*
 Contains all source data required to reproduce Figures 1-5 from the manuscript.
 
-📁 source_plot/
+📁 *source_plot/*
 Includes complete plotting code for generating Figures 1-5 as presented in the manuscript.
 
 # Usage
 Execute scripts in numerical order within the main_analysis/ directory to reproduce the complete analytical pipeline:
 
-Start with directional pair identification
+1. Start with directional pair identification
 
-Proceed to significance testing
+2. Proceed to significance testing
 
-Construct disease trajectories
+3. Construct disease trajectories
 
-Analyze healthcare utilization
+4. Analyze healthcare utilization
 
-Perform trajectory clustering
+5. Perform trajectory clustering
 
 # Citation
 If you use this code in your research, please cite our publication.
